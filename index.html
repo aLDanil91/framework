@@ -1,0 +1,79 @@
+<script>
+    function rand(a, b) {
+    if (arguments.length == 2) {
+        return Number(Math.random() * Number(a - b) + Number(b));
+    }
+}
+function err(x) {
+    throw new Error(x);
+}
+function q(x) {
+    if (typeof x == 'undefined') {
+        return document.querySelectorAll('*');
+    }
+    if (x.indexOf('<') == 0) {
+        this.d = document.createElement('div');
+        this.d.innerHTML = x;
+        return this.d;
+    } else {
+        return document.querySelectorAll(x);
+    }
+}
+function word(x) {
+    if (typeof x == 'string') {
+        return x.split(' ');
+    } if (typeof x == 'object') {
+        return x.join(' ');
+    }
+}
+function rep(a, b, c) {
+    return a.replaceAll(b, c);
+}
+function med(...args) {
+    return args.reduce((a, b) => a + b) / args.length;
+}
+function sqr(a, b) {
+    return a ** b;
+}
+function calc(x) {
+    this.x = x.toLowerCase();
+    if (this.x.indexOf('q') !== -1 || this.x.indexOf('w') !== -1 || this.x.indexOf('e') !== -1 || this.x.indexOf('r') !== -1 || this.x.indexOf('t') !== -1 || this.x.indexOf('y') !== -1 || this.x.indexOf('u') !== -1 || this.x.indexOf('i') !== -1 || this.x.indexOf('o') !== -1 || this.x.indexOf('p') !== -1 || this.x.indexOf('[') !== -1 || this.x.indexOf(']') !== -1 || this.x.indexOf('a') !== -1 || this.x.indexOf('s') !== -1 || this.x.indexOf('d') !== -1 || this.x.indexOf('f') !== -1 || this.x.indexOf('g') !== -1 || this.x.indexOf('h') !== -1 || this.x.indexOf('j') !== -1 || this.x.indexOf('k') !== -1 || this.x.indexOf('l') !== -1 || this.x.indexOf(';') !== -1 || this.x.indexOf('\'') !== -1 || this.x.indexOf('z') !== -1 || this.x.indexOf('x') !== -1 || this.x.indexOf('c') !== -1 || this.x.indexOf('v') !== -1 || this.x.indexOf('b') !== -1 || this.x.indexOf('n') !== -1 || this.x.indexOf('m') !== -1) {
+        err(`expression ${x} has an error`);
+    } else {
+        try {
+            return eval(x);
+        } catch (error) {
+            err(`expression ${x} has an error`);
+        }
+    }
+}
+Element.prototype.on = function (a, b) {
+    this.addEventListener(a, b);
+}
+Element.prototype.hide = function (x) {
+    this.style.display = 'none';
+}
+Element.prototype.show = function (x) {
+    this.style.display = 'block';
+}
+Element.prototype.css = function (x) {
+    this.style.cssText = x;
+}
+Element.prototype.val = function (x) {
+    if (arguments.length == 0) {
+        return this.textContent;
+    }
+    if (arguments.length == 1) {
+        this.textContent = x;
+    }
+}
+
+Element.prototype.appendTo = function (x) {
+    if (typeof x == 'string') {
+        document.querySelectorAll(x)[0].append(this);
+    }
+    if (typeof x == 'object') {
+        x.append(this);
+    }
+}
+</script>
